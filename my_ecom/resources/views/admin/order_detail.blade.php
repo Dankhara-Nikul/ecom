@@ -7,7 +7,7 @@
 
     <div class="order_operation">
            <b>Update Order Status </b>
-           <select class="form-control m-b-10" id="order_status" onchange="update_order_status({{$orders_details[0]->id}})">
+           <select class="form-control m-b-10" id="order_status" onchange="update_order_status('{{$orders_details[0]->id}}')">
               <?php
               foreach($orders_status as $list){
                   if($orders_details[0]->order_status==$list->id){
@@ -20,7 +20,7 @@
            </select>       
 
            <b>Update Payment Status </b>
-           <select class="form-control  m-b-10" id="payment_status" onchange="update_payemnt_status({{$orders_details[0]->id}})">
+           <select class="form-control  m-b-10" id="payment_status" onchange="update_payemnt_status('{{$orders_details[0]->id}}')">
               <?php
               foreach($payment_status as $list){
                   if($orders_details[0]->payment_status==$list){
@@ -63,7 +63,11 @@
                   echo 'Payment ID: '.$orders_details[0]->payment_id;
               }
              ?>
-             
+              
+
+
+
+
           </div> 
       </div>
      

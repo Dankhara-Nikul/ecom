@@ -1167,8 +1167,8 @@ section {
     left: 0;
     height: 22px;
     width: 22px;
-    background-color: #fff;
-    border: 2px solid #e5e5e5;
+    background-color: rgb(255, 255, 255);
+    border: 2px solid #000000;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;

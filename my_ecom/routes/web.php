@@ -140,6 +140,9 @@ Route::group(['middleware'=>'admin_auth'],function(){
 
     Route::get('admin/product',[ProductController::class,'index']);
     Route::get('admin/product/manage_product',[ProductController::class,'manage_product']);
+    Route::view('admin/product/import_product','admin/import_product');
+    Route::get('admin/product/import_product_upload',[ProductController::class,'import_product']);
+    Route::get('admin/product/export_product',[ProductController::class,'export_product']);
     Route::get('admin/product/manage_product/{id}',[ProductController::class,'manage_product']);
     Route::post('admin/product/manage_producty_process',[ProductController::class,'manage_product_process'])->name('product.manage_product_process');
     Route::get('admin/product/delete/{id}',[ProductController::class,'delete']);
@@ -182,9 +185,12 @@ Route::group(['middleware'=>'admin_auth'],function(){
 
     Route::get('admin/order',[OrderController::class,'index']);
     Route::get('admin/order_detail/{id}',[OrderController::class,'order_detail']);
+    Route::get('admin/order_status/{id}',[OrderController::class,'order_status']);
     Route::post('admin/order_detail/{id}',[OrderController::class,'update_track_detail']);
     Route::get('admin/update_payemnt_status/{status}/{id}',[OrderController::class,'update_payemnt_status']);
     Route::get('admin/update_order_status/{status}/{id}',[OrderController::class,'update_order_status']);
+    Route::get('admin/update_order_status1/{status}/{id}',[OrderController::class,'update_order_status1']);
+    Route::get('admin/update_order_filter/{status}/{date}',[OrderController::class,'update_order_filter']);
 
     Route::get('admin/product_review',[ProductReviewController::class,'index']);
     Route::get('admin/update_product_review_status/{status}/{id}',[ProductReviewController::class,'update_product_review_status']);

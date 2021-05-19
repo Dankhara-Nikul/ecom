@@ -16,6 +16,16 @@
             Add Product
         </button>
     </a>
+    <a href="{{url('admin/product/import_product')}}">
+        <button type="button" class="btn btn-secondary">
+            Import
+        </button>
+    </a>
+    <a href="{{url('admin/product/export_product')}}">
+        <button type="button" class="btn btn-primary">
+            Export
+        </button>
+    </a>
     <div class="row m-t-30">
         <div class="col-md-12">
             <!-- DATA TABLE-->

@@ -103,10 +103,7 @@
                             <a href="{{url('admin/dashboard')}}">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
-                        <li class="has-sub">
-                            <a class="js-arrow" href="">
-                                <i class="zmdi zmdi-view-dashboard"></i>Product Attribute</a>
-                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                       
                                 <li class="@yield('category_select')">
                                     <a href="{{url('admin/category')}}">
                                         <i class="fas fa-list"></i>Category</a>
@@ -151,8 +148,7 @@
                                     <a href="{{url('admin/tax')}}">
                                         <i class="fas fa-percent"></i>Tax</a>
                                 </li>
-                            </ul>
-                        </li>
+                           
                         <li class="@yield('order_select')">
                             <a href="{{url('admin/order')}}">
                                 <i class="fas fa-shopping-basket"></i>Order</a>
@@ -161,11 +157,7 @@
                             <a href="{{url('admin/product_review')}}">
                                 <i class="fas fa-star"></i>Product Review</a>
                         </li>
-
-
-
-
-                        <li class="@yield('product_select')">
+                          <li class="@yield('product_select')">
                             <a href="{{url('admin/product')}}">
                                 <i class="fa fa-product-hunt"></i>Product</a>
                         </li>
@@ -246,6 +238,8 @@
     <script src="{{asset('admin_assets/vendor/bootstrap-4.1/bootstrap.min.js')}}"></script>
     <script src="{{asset('admin_assets/vendor/wow/wow.min.js')}}"></script>
     <script src="{{asset('admin_assets/js/main.js')}}"></script>
+    
+    
 </body>
 
 </html>

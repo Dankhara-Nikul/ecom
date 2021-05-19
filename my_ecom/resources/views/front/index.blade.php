@@ -1,35 +1,8 @@
 @extends('front/layout')
 @section('page_title','Home Page')
 @section('container')
+<img data-seq src="storage\app\..\public\media\banner\1613593472.jpg" />
 
-<section id="aa-slider">
-  <div class="aa-slider-area">
-    <div id="sequence" class="seq">
-      <div class="seq-screen">
-        <ul class="seq-canvas">
-          <!-- single slide item -->
-          @foreach($home_banner as $list)
-          <li>
-            <div class="seq-model">
-              <img data-seq src="{{asset('storage/media/banner/'.$list->image)}}" />
-            </div>
-            @if($list->btn_txt!='')
-            <div class="seq-title">
-              <a data-seq target="_blank" href="{{$list->btn_link}}" class="aa-shop-now-btn aa-secondary-btn">{{$list->btn_txt}}</a>
-            </div>
-            @endif
-          </li>
-          @endforeach
-        </ul>
-      </div>
-      <!-- slider navigation btn -->
-      <fieldset class="seq-nav" aria-controls="sequence" aria-label="Slider buttons">
-        <a type="button" class="seq-prev" aria-label="Previous"><span class="fa fa-angle-left"></span></a>
-        <a type="button" class="seq-next" aria-label="Next"><span class="fa fa-angle-right"></span></a>
-      </fieldset>
-    </div>
-  </div>
-</section>
 <!-- / slider -->
 <!-- Start Promo section -->
 <div class="row pt-4 pb-5 py-4  justify-content-center">
@@ -38,7 +11,7 @@
   <div class="col-6 col-lg-3 py-4 ">
     <div class="image-area ">
       <div class="img-wrapper ">
-        <img src="{{asset('storage/media/category/'.$list->category_image)}} " alt="Atul Prajapati ">
+        <img src="{{asset('storage/media/category/'.$list->category_image)}} " alt=" ">
         <h2><a href="{{url('category/'.$list->category_slug)}}">{{$list->category_name}}</a></h2>
       </div>
     </div>
@@ -229,7 +202,7 @@
                   <li>
                     <figure>
                       <a class="aa-product-img" href="{{url('product/'.$productArr->slug)}}"><img src="{{asset('storage/media/'.$productArr->image)}}" alt="{{$productArr->name}}"></a>
-                      <a class="aa-add-card-btn" href="javascript:void(0)" onclick="home_add_to_cart('{{$productArr->id}}','{{$home_product_attr[$productArr->id][0]->size}}','{{$home_product_attr[$productArr->id][0]->color}}')"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+                      <a class="aa-add-card-btn" href="" onclick="home_add_to_cart('{{$productArr->id}}','{{$home_product_attr[$productArr->id][0]->size}}','{{$home_product_attr[$productArr->id][0]->color}}')"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
                       <figcaption>
                         <h4 class="aa-product-title"><a href="{{url('product/'.$productArr->slug)}}">{{$productArr->name}}</a></h4>
                         <span class="aa-product-price">Rs {{$home_discounted_product_attr[$productArr->id][0]->price}}</span><span class="aa-product-price"><del>Rs {{$home_discounted_product_attr[$productArr->id][0]->mrp}}</del></span>

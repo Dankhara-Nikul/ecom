@@ -108,6 +108,7 @@ class FrontController extends Controller
         $filter_price_end="";
         $color_filter="";
         $colorFilterArr=[];
+      
         if($request->get('sort')!==null){
             $sort=$request->get('sort');
         }    

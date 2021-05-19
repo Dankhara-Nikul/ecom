@@ -13,11 +13,23 @@ class OrderController extends Controller
         ->select('orders.*','orders_status.orders_status')
         ->leftJoin('orders_status','orders_status.id','=','orders.order_status')
         ->get();   
+        $result['order_status_list']=DB::table('orders_status')->get();
         return view('admin.order',$result);
-    }    
+    }  
+    public function update_order_filter(Request $request,$status,$date)
+    {
+        $result['orders']=DB::table('orders')
+        ->where(['order_status'=>$status ,'added_on'=>$date])
+        ->select('orders.*','orders_status.orders_status')
+        ->leftJoin('orders_status','orders_status.id','=','orders.order_status')
+        ->get();
+        $result['order_status_list']=DB::table('orders_status')->get();
+        return view('admin.order',$result);
+    }   
 
     public function order_detail(Request $request,$id)
     {
+        
         $result['orders_details']=
                 DB::table('orders_details')
                 ->select('orders.*','orders_details.price','orders_details.qty','products.name as pname','products_attr.attr_image','sizes.size','colors.color','orders_status.orders_status')
@@ -29,6 +41,7 @@ class OrderController extends Controller
                 ->leftJoin('colors','colors.id','=','products_attr.color_id')
                 ->where(['orders.id'=>$id])
                 ->get();
+                
 
         $result['orders_status']=
             DB::table('orders_status')
@@ -52,6 +65,13 @@ class OrderController extends Controller
         ->update(['order_status'=>$status]);
         return redirect('/admin/order_detail/'.$id);
     } 
+    public function update_order_status1(Request $request,$status,$id)
+    {
+        DB::table('orders')
+        ->where(['id'=>$id])
+        ->update(['order_status'=>$status]);
+        return redirect('/admin/order/');
+    } 
 
     public function update_track_detail(Request $request,$id)
     {
@@ -61,6 +81,11 @@ class OrderController extends Controller
         ->update(['track_details'=>$track_details]);
         return redirect('/admin/order_detail/'.$id);
     } 
+    public function order_status(Request $request,$id)
+    {
+        echo "hello".$id;
+    } 
+   
     
     
     

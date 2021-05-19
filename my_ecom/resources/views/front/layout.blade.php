@@ -142,9 +142,13 @@
                       </span>
                     </li>
                   </ul>
-                  <a class="aa-cartbox-checkout aa-primary-btn" href="{{url('/cart')}}">Cart</a>
+                 
+                  @else
+                  <p>Cart is Empty</p>
+                  @endif
+                  <a id="c1" class="aa-cartbox-checkout aa-primary-btn" href="{{url('/cart')}}">Cart</a>
                
-                @endif
+               
                 </div>
               </div>
               <!-- / cart box -->
@@ -214,26 +218,26 @@
             <div class="row">
               <div class="col-md-3 col-sm-6">
                 <div class="aa-footer-widget">
-                  <h3>Main Menu</h3>
+                  <h3>Useful Link</h3>
                   <ul class="aa-footer-nav">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Our Services</a></li>
-                    <li><a href="#">Our Products</a></li>
                     <li><a href="#">About Us</a></li>
                     <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Privacy Police</a></li>
+                    <li><a href="#">Terms and Conditions</a></li>
+                    <li><a href="#">Refund And Cancellation Policy</a></li>
+                    <li><a href="#">Shipping Policy</a></li>
+                    <li><a href="#">International Order</a></li>
                   </ul>
                 </div>
               </div>
               <div class="col-md-3 col-sm-6">
                 <div class="aa-footer-widget">
                   <div class="aa-footer-widget">
-                    <h3>Knowledge Base</h3>
+                    <h3>Account</h3>
                     <ul class="aa-footer-nav">
-                      <li><a href="#">Delivery</a></li>
-                      <li><a href="#">Returns</a></li>
-                      <li><a href="#">Services</a></li>
-                      <li><a href="#">Discount</a></li>
-                      <li><a href="#">Special Offer</a></li>
+                      <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
+                      <li><a href="{{url('registration')}}">Register</a></li>
+                      
                     </ul>
                   </div>
                 </div>
@@ -241,32 +245,28 @@
               <div class="col-md-3 col-sm-6">
                 <div class="aa-footer-widget">
                   <div class="aa-footer-widget">
-                    <h3>Useful Links</h3>
-                    <ul class="aa-footer-nav">
-                      <li><a href="#">Site Map</a></li>
-                      <li><a href="#">Search</a></li>
-                      <li><a href="#">Advanced Search</a></li>
-                      <li><a href="#">Suppliers</a></li>
-                      <li><a href="#">FAQ</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-3 col-sm-6">
-                <div class="aa-footer-widget">
-                  <div class="aa-footer-widget">
-                    <h3>Contact Us</h3>
-                    <address>
-                      <p> 25 Astor Pl, NY 10003, USA</p>
-                      <p><span class="fa fa-phone"></span>+1 212-982-4589</p>
-                      <p><span class="fa fa-envelope"></span>dailyshop@gmail.com</p>
-                    </address>
+                    <h3>Follow us</h3>
                     <div class="aa-footer-social">
                       <a href="#"><span class="fa fa-facebook"></span></a>
                       <a href="#"><span class="fa fa-twitter"></span></a>
                       <a href="#"><span class="fa fa-google-plus"></span></a>
                       <a href="#"><span class="fa fa-youtube"></span></a>
                     </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6">
+                <div class="aa-footer-widget">
+                  <div class="aa-footer-widget">
+                    <div>
+                      <img src="" width="328" height="25"/>
+                    </div>
+                    <address>
+                      <p> 25 Astor Pl, NY 10003, USA</p>
+                      <p><span class="fa fa-phone"></span>+1 212-982-4589</p>
+                      <p><span class="fa fa-envelope"></span>dailyshop@gmail.com</p>
+                    </address>
+                   
                   </div>
                 </div>
               </div>
@@ -282,7 +282,7 @@
         <div class="row">
         <div class="col-md-12">
           <div class="aa-footer-bottom-area">
-            <p>Designed by <a href="http://www.markups.io/">MarkUps.io</a></p>
+           
             <div class="aa-footer-payment">
               <span class="fa fa-cc-mastercard"></span>
               <span class="fa fa-cc-visa"></span>

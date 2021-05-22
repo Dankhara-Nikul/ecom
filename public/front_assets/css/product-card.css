@@ -1,0 +1,168 @@
+/* card */
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
+.product-card-custom {
+    background: linear-gradient(180deg, #8ab6d6, #2978b5);
+    padding-bottom: 30px;
+    border-top: 5px solid white;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bold;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+
+.product-text-banner {
+    text-align: center;
+    color: white;
+    font-variant: small-caps;
+    font-size: 30px;
+    margin-bottom: 10px;
+    margin-top: -10px;
+}
+
+.text-explore {
+    margin-top: 2rem;
+    color: white;
+    font-size: 20px;
+    font-variant: small-caps;
+}
+
+.dress-card-img-top {
+    width: 100%;
+    border-radius: 7px 7px 0 0;
+    padding: 3px 3px;
+    background-color: white;
+}
+
+.dress-card-body {
+    padding: 1rem;
+    background: #fff;
+    border-radius: 0 0 7px 7px;
+}
+
+.dress-card-title {
+    line-height: 0.5rem;
+}
+
+.dress-card-crossed {
+    text-decoration: line-through;
+}
+
+.dress-card-price {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.dress-card-off {
+    color: #1eae98;
+}
+
+.dress-card-para {
+    margin-bottom: 0.2rem;
+    font-size: 1.0rem;
+    margin-bottom: 0rem;
+}
+
+.dress-card {
+    border-radius: 14px;
+}
+
+.dress-card-heart {
+    font-size: 1em;
+    color: #1eae98;
+    margin: 4.5px;
+    position: absolute;
+    left: 4px;
+    top: 0px;
+}
+
+.surprise-bubble {
+    position: absolute;
+    bottom: 12rem;
+    right: 2rem;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    background: #fff;
+    padding: 1rem;
+    color: white;
+    -webkit-transition: all 0.55s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: all 0.55s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.surprise-bubble a {
+    font-size: 0.65em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+    font-family: arial;
+    text-decoration: none;
+    position: absolute;
+    top: 9px;
+    left: 20px;
+    opacity: 0;
+    -webkit-transition-delay: 2s;
+    /* Safari */
+    transition-delay: 2s;
+    -webkit-transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.surprise-bubble:hover {
+    border-radius: 999rem;
+    padding: 1rem;
+    width: 26%;
+    height: 30px;
+    background: #1eae98;
+    color: white;
+    -webkit-transition: all 0.55s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: all 0.55s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.surprise-bubble:hover a {
+    opacity: 1;
+    -webkit-transition-delay: 2s;
+    /* Safari */
+    transition-delay: 2s;
+    -webkit-transition: opacity 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: opacity 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.card-button {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 15px;
+    padding: 9px;
+}
+
+.card-button a {
+    text-decoration: none;
+}
+
+.card-button-inner {
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.bag-button {
+    background: #1eae98;
+    color: white;
+}
+
+.bag-button :hover {
+    background: #1eae98;
+}
+
+.wish-button {
+    border: 1px solid #1eae98;
+    color: #1eae98;
+}
+
+@media screen and (max-width:768px) {
+    .dress-card-img-top {
+        width: 100%;
+        border-radius: 7px 7px 0 0;
+        padding: 3px 3px;
+        background-color: white;
+        margin-top: 1rem;
+    }
+}

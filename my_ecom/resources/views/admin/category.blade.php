@@ -26,6 +26,7 @@
                         <th>ID</th>
                         <th>Category Name</th>
                         <th>Category Slug</th>
+                        <th>Category Image</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -35,6 +36,10 @@
                         <td>{{$list->id}}</td>
                         <td>{{$list->category_name}}</td>
                         <td>{{$list->category_slug}}</td>
+                        <td>
+                        <img width="100px" src="{{asset('storage/media/category/'.$list->category_image)}}"/>
+                        
+                        </td>
                         <td>
                         <div class="table-data-feature">
                                 @if($list->status==1)

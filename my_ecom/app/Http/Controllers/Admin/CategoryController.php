@@ -12,7 +12,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $result['data']=Category::all();
+        $result['data']=DB::table('categories')->where(['status'=>1])->where('parent_category_id','=',0)->get();
         return view('admin/category',$result);
     }
 
@@ -24,7 +24,7 @@ class CategoryController extends Controller
 
             $result['category_name']=$arr['0']->category_name;
             $result['category_slug']=$arr['0']->category_slug;
-            $result['parent_category_id']=$arr['0']->parent_category_id;
+            $result['parent_category_id']=0;
             $result['category_image']=$arr['0']->category_image;
             $result['is_home']=$arr['0']->is_home;
             $result['is_home_selected']="";
@@ -49,8 +49,17 @@ class CategoryController extends Controller
 
         return view('admin/manage_category',$result);
     }
+    public function manage_sub_category(Request $request,$id='')
+    {  
+        $arr=Category::where(['id'=>$id])->get();
+        $result['id']=$arr['0']->id;
+        $result['name']=$arr['0']->category_name;
+            $result['data']=DB::table('categories')->where('parent_category_id','=',$id)->get();
+           
+        return view('admin/manage_sub_category',$result);
+    }
 
-    public function manage_category_process(Request $request)
+    public function manage_category_process(Request $request,$cid='')
     {
         //return $request->post();
         
@@ -76,16 +85,26 @@ class CategoryController extends Controller
                     Storage::delete('/public/storage/media/category/'.$arrImage[0]->category_image);
                 }
             }
-
+            
+        if (!Storage::disk('public')->exists('upload/category')) {
+            Storage::disk('public')->makeDirectory('upload/category');
+        }
             $image=$request->file('category_image');
             $ext=$image->extension();
             $image_name=time().'.'.$ext;
-            $image->storeAs('/public/storage/media/category',$image_name);
+            $image->storeAs('/public/upload/category',$image_name);
             $model->category_image=$image_name;
         }
         $model->category_name=$request->post('category_name');
         $model->category_slug=$request->post('category_slug');
-        $model->parent_category_id=$request->post('parent_category_id');
+        if($cid=='')
+        {
+            $model->parent_category_id=0;
+        }
+        else{
+            $model->parent_category_id=$cid;
+        }
+       
         $model->is_home=0;
         if($request->post('is_home')!==null){
             $model->is_home=1;
@@ -93,23 +112,47 @@ class CategoryController extends Controller
         $model->status=1;
         $model->save();
         $request->session()->flash('message',$msg);
-        return redirect('admin/category');
+        if($cid=='')
+        {
+            return redirect('admin/category');
+        }
+        else{
+            return redirect('admin/category/manage_sub_category/'.$cid);
+        }
+       
         
     }
 
     public function delete(Request $request,$id){
         $model=Category::find($id);
+        $arr=Category::where(['id'=>$id])->get();
+        $pid=$arr['0']->parent_category_id;
         $model->delete();
         $request->session()->flash('message','Category deleted');
-        return redirect('admin/category');
+        if($pid!=0)
+        {
+            return redirect('admin/category/manage_sub_category/'.$pid);
+        }
+        else{
+            return redirect('admin/category');
+        }
     }
 
     public function status(Request $request,$status,$id){
         $model=Category::find($id);
+        $arr=Category::where(['id'=>$id])->get();
+        $pid=$arr['0']->parent_category_id;
         $model->status=$status;
         $model->save();
         $request->session()->flash('message','Category status updated');
-        return redirect('admin/category');
+        if($pid!=0)
+        {
+            return redirect('admin/category/manage_sub_category/'.$pid);
+        }
+        else{
+            return redirect('admin/category');
+        }
+        
     }
 
     

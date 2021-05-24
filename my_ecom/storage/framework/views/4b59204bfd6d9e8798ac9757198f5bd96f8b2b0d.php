@@ -1,17 +1,18 @@
-@extends('admin/layout')
-@section('page_title','Category')
-@section('category_select','active')
-@section('container')
-@if(session()->has('message'))
+
+<?php $__env->startSection('page_title','Category'); ?>
+<?php $__env->startSection('category_select','active'); ?>
+<?php $__env->startSection('container'); ?>
+<?php if(session()->has('message')): ?>
 <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
-    {{session('message')}}
+    <?php echo e(session('message')); ?>
+
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">×</span>
     </button>
 </div>
-@endif
+<?php endif; ?>
 <h1 class="mb10">Category</h1>
-<a href="{{url('admin/category/manage_category')}}">
+<a href="<?php echo e(url('admin/category/manage_category')); ?>">
     <button type="button" class="btn btn-success">
         Add Category
     </button>
@@ -31,36 +32,36 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($data as $list)
+                    <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $list): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <tr>
-                        <td>{{$list->id}}</td>
-                        <td>{{$list->category_name}}</td>
-                        <td>{{$list->category_slug}}</td>
+                        <td><?php echo e($list->id); ?></td>
+                        <td><?php echo e($list->category_name); ?></td>
+                        <td><?php echo e($list->category_slug); ?></td>
                         <td>
-                        <img width="100px" src="{{asset('/storage/upload/category/'.$list->category_image)}}"/>
+                        <img width="100px" src="<?php echo e(asset('/storage/upload/category/'.$list->category_image)); ?>"/>
                         
                         </td>
                         <td>
                         <div class="table-data-feature">
-                                @if($list->status==1)
-                                <a href="{{url('admin/category/status/0')}}/{{$list->id}}">
+                                <?php if($list->status==1): ?>
+                                <a href="<?php echo e(url('admin/category/status/0')); ?>/<?php echo e($list->id); ?>">
                                 <button class="item" data-toggle="tooltip" data-placement="top" title="Active">
                                     <i class="zmdi zmdi-eye"></i>
                                 </button>
                                 </a>
-                                @elseif($list->status==0)
-                                <a href="{{url('admin/category/status/1')}}/{{$list->id}}">
+                                <?php elseif($list->status==0): ?>
+                                <a href="<?php echo e(url('admin/category/status/1')); ?>/<?php echo e($list->id); ?>">
                                 <button class="item" data-toggle="tooltip" data-placement="top" title="Deactive">
                                     <i class="zmdi zmdi-eye-off"></i>
                                 </button>
                                 </a>
-                                @endif
-                                <a href="{{url('admin/category/manage_sub_category/')}}/{{$list->id}}">
+                                <?php endif; ?>
+                                <a href="<?php echo e(url('admin/category/manage_sub_category/')); ?>/<?php echo e($list->id); ?>">
                                 <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                                     <i class="zmdi zmdi-edit"></i>
                                 </button>
                                 </a>    
-                                <a href="{{url('admin/category/delete')}}/{{$list->id}}">
+                                <a href="<?php echo e(url('admin/category/delete')); ?>/<?php echo e($list->id); ?>">
                                 <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                     <i class="zmdi zmdi-delete"></i>
                                 </button>
@@ -73,7 +74,7 @@
                         </td>
 
                     </tr>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
             </table>
         </div>
@@ -81,4 +82,5 @@
     </div>
 </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin/layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\laravel\laravel8EcomPart48\my_ecom\resources\views/admin/category.blade.php ENDPATH**/ ?>

@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>@yield('page_title')</title>
-    <link href="{{asset('admin_assets/css/font-face.css')}}" rel="stylesheet" media="all">
-    <link href="{{asset('admin_assets/vendor/font-awesome-4.7/css/font-awesome.min.css')}}" rel="stylesheet" media="all">
-    <link href="{{asset('admin_assets/vendor/font-awesome-5/css/fontawesome-all.min.css')}}" rel="stylesheet" media="all">
+    <title><?php echo $__env->yieldContent('page_title'); ?></title>
+    <link href="<?php echo e(asset('admin_assets/css/font-face.css')); ?>" rel="stylesheet" media="all">
+    <link href="<?php echo e(asset('admin_assets/vendor/font-awesome-4.7/css/font-awesome.min.css')); ?>" rel="stylesheet" media="all">
+    <link href="<?php echo e(asset('admin_assets/vendor/font-awesome-5/css/fontawesome-all.min.css')); ?>" rel="stylesheet" media="all">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" media="all">
-    <link href="{{asset('admin_assets/vendor/mdi-font/css/material-design-iconic-font.min.css')}}" rel="stylesheet" media="all">
-    <link href="{{asset('admin_assets/vendor/bootstrap-4.1/bootstrap.min.css')}}" rel="stylesheet" media="all">
-    <link href="{{asset('admin_assets/css/theme.css')}}" rel="stylesheet" media="all">
+    <link href="<?php echo e(asset('admin_assets/vendor/mdi-font/css/material-design-iconic-font.min.css')); ?>" rel="stylesheet" media="all">
+    <link href="<?php echo e(asset('admin_assets/vendor/bootstrap-4.1/bootstrap.min.css')); ?>" rel="stylesheet" media="all">
+    <link href="<?php echo e(asset('admin_assets/css/theme.css')); ?>" rel="stylesheet" media="all">
 
 </head>
 
@@ -22,8 +22,8 @@
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
-                        <a class="logo" href="{{url('admin/dashboard')}}">
-                            <img src="{{asset('admin_assets/images/icon/logo.png')}}" alt="CoolAdmin" width="100px" />
+                        <a class="logo" href="<?php echo e(url('admin/dashboard')); ?>">
+                            <img src="<?php echo e(asset('admin_assets/images/icon/logo.png')); ?>" alt="CoolAdmin" width="100px" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -36,55 +36,55 @@
             <nav class="navbar-mobile">
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
-                        <li class="@yield('dashboard_select')">
-                            <a href="{{url('admin/dashboard')}}">
+                        <li class="<?php echo $__env->yieldContent('dashboard_select'); ?>">
+                            <a href="<?php echo e(url('admin/dashboard')); ?>">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
-                        <li class="@yield('media_select')">
-                            <a href="{{url('admin/media')}}">
+                        <li class="<?php echo $__env->yieldContent('media_select'); ?>">
+                            <a href="<?php echo e(url('admin/media')); ?>">
                                 <i class="fas fa-tachometer-alt"></i>Media</a>
                         </li>
-                        <li class="@yield('order_select')">
-                            <a href="{{url('admin/order')}}">
+                        <li class="<?php echo $__env->yieldContent('order_select'); ?>">
+                            <a href="<?php echo e(url('admin/order')); ?>">
                                 <i class="fas fa-shopping-basket"></i>Order</a>
                         </li>
-                        <li class="@yield('category_select')">
-                            <a href="{{url('admin/category')}}">
+                        <li class="<?php echo $__env->yieldContent('category_select'); ?>">
+                            <a href="<?php echo e(url('admin/category')); ?>">
                                 <i class="fas fa-list"></i>Category</a>
                         </li>
 
-                        <li class="@yield('coupon_select')">
-                            <a href="{{url('admin/coupon')}}">
+                        <li class="<?php echo $__env->yieldContent('coupon_select'); ?>">
+                            <a href="<?php echo e(url('admin/coupon')); ?>">
                                 <i class="fas fa-tag"></i>Coupon</a>
                         </li>
 
-                        <li class="@yield('size_select')">
-                            <a href="{{url('admin/size')}}">
+                        <li class="<?php echo $__env->yieldContent('size_select'); ?>">
+                            <a href="<?php echo e(url('admin/size')); ?>">
                                 <i class="fas fa-window-maximize"></i>Size</a>
                         </li>
 
-                        <li class="@yield('brand_select')">
-                            <a href="{{url('admin/brand')}}">
+                        <li class="<?php echo $__env->yieldContent('brand_select'); ?>">
+                            <a href="<?php echo e(url('admin/brand')); ?>">
                                 <i class="fa fa-product-hunt"></i>Brand</a>
                         </li>
 
-                        <li class="@yield('color_select')">
-                            <a href="{{url('admin/color')}}">
+                        <li class="<?php echo $__env->yieldContent('color_select'); ?>">
+                            <a href="<?php echo e(url('admin/color')); ?>">
                                 <i class="fas fa-paint-brush"></i>Color</a>
                         </li>
 
-                        <li class="@yield('tax_select')">
-                            <a href="{{url('admin/tax')}}">
+                        <li class="<?php echo $__env->yieldContent('tax_select'); ?>">
+                            <a href="<?php echo e(url('admin/tax')); ?>">
                                 <i class="fas fa-percent"></i>Tax</a>
                         </li>
 
-                        <li class="@yield('product_select')">
-                            <a href="{{url('admin/product')}}">
+                        <li class="<?php echo $__env->yieldContent('product_select'); ?>">
+                            <a href="<?php echo e(url('admin/product')); ?>">
                                 <i class="fa fa-product-hunt"></i>Product</a>
                         </li>
 
-                        <li class="@yield('customer_select')">
-                            <a href="{{url('admin/customer')}}">
+                        <li class="<?php echo $__env->yieldContent('customer_select'); ?>">
+                            <a href="<?php echo e(url('admin/customer')); ?>">
                                 <i class="fa fa-user"></i>Customer</a>
                         </li>
                     </ul>
@@ -96,87 +96,87 @@
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
-                <a href="{{url('admin/dashboard')}}">
-                    <img src="{{asset('admin_assets/images/icon/logo.png')}}" width="100px" />
+                <a href="<?php echo e(url('admin/dashboard')); ?>">
+                    <img src="<?php echo e(asset('admin_assets/images/icon/logo.png')); ?>" width="100px" />
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        <li class="@yield('dashboard_select')">
-                            <a href="{{url('admin/dashboard')}}">
+                        <li class="<?php echo $__env->yieldContent('dashboard_select'); ?>">
+                            <a href="<?php echo e(url('admin/dashboard')); ?>">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
-                        <li class="@yield('media_select')">
-                            <a href="{{url('admin/media')}}">
+                        <li class="<?php echo $__env->yieldContent('media_select'); ?>">
+                            <a href="<?php echo e(url('admin/media')); ?>">
                                 <i class="fas fa-tachometer-alt"></i>Media</a>
                         </li>
                        
-                                <li class="@yield('category_select')">
-                                    <a href="{{url('admin/category')}}">
+                                <li class="<?php echo $__env->yieldContent('category_select'); ?>">
+                                    <a href="<?php echo e(url('admin/category')); ?>">
                                         <i class="fas fa-list"></i>Category</a>
                                 </li>
-                                <li class="@yield('coupon_select')">
-                                    <a href="{{url('admin/coupon')}}">
+                                <li class="<?php echo $__env->yieldContent('coupon_select'); ?>">
+                                    <a href="<?php echo e(url('admin/coupon')); ?>">
                                         <i class="fas fa-tag"></i>Coupon</a>
                                 </li>
 
-                                <li class="@yield('size_select')">
-                                    <a href="{{url('admin/size')}}">
+                                <li class="<?php echo $__env->yieldContent('size_select'); ?>">
+                                    <a href="<?php echo e(url('admin/size')); ?>">
                                         <i class="fas fa-window-maximize"></i>Size</a>
                                 </li>
 
-                                <li class="@yield('brand_select')">
-                                    <a href="{{url('admin/brand')}}">
+                                <li class="<?php echo $__env->yieldContent('brand_select'); ?>">
+                                    <a href="<?php echo e(url('admin/brand')); ?>">
                                         <i class="fa fa-bold"></i>Brand</a>
                                 </li>
 
-                                <li class="@yield('color_select')">
-                                    <a href="{{url('admin/color')}}">
+                                <li class="<?php echo $__env->yieldContent('color_select'); ?>">
+                                    <a href="<?php echo e(url('admin/color')); ?>">
                                         <i class="fas fa-paint-brush"></i>Color</a>
                                 </li>
-                                <li class="@yield('fabric_select')">
-                                    <a href="{{url('admin/fabric')}}">
+                                <li class="<?php echo $__env->yieldContent('fabric_select'); ?>">
+                                    <a href="<?php echo e(url('admin/fabric')); ?>">
                                         <i class="zmdi zmdi-labels"></i>Fabric</a>
                                 </li>
-                                <li class="@yield('type_select')">
-                                    <a href="{{url('admin/type')}}">
+                                <li class="<?php echo $__env->yieldContent('type_select'); ?>">
+                                    <a href="<?php echo e(url('admin/type')); ?>">
                                         <i class="zmdi zmdi-view-week"></i>Type</a>
                                 </li>
-                                <li class="@yield('collar_select')">
-                                    <a href="{{url('admin/collar')}}">
+                                <li class="<?php echo $__env->yieldContent('collar_select'); ?>">
+                                    <a href="<?php echo e(url('admin/collar')); ?>">
                                         <i class="zmdi zmdi-face"></i>Collars</a>
                                 </li>
-                                <li class="@yield('pattern_select')">
-                                    <a href="{{url('admin/pattern')}}">
+                                <li class="<?php echo $__env->yieldContent('pattern_select'); ?>">
+                                    <a href="<?php echo e(url('admin/pattern')); ?>">
                                         <i class="zmdi zmdi-border-all"></i>Patterns</a>
                                 </li>
 
-                                <li class="@yield('tax_select')">
-                                    <a href="{{url('admin/tax')}}">
+                                <li class="<?php echo $__env->yieldContent('tax_select'); ?>">
+                                    <a href="<?php echo e(url('admin/tax')); ?>">
                                         <i class="fas fa-percent"></i>Tax</a>
                                 </li>
                            
-                        <li class="@yield('order_select')">
-                            <a href="{{url('admin/order')}}">
+                        <li class="<?php echo $__env->yieldContent('order_select'); ?>">
+                            <a href="<?php echo e(url('admin/order')); ?>">
                                 <i class="fas fa-shopping-basket"></i>Order</a>
                         </li>
-                        <li class="@yield('product_review_select')">
-                            <a href="{{url('admin/product_review')}}">
+                        <li class="<?php echo $__env->yieldContent('product_review_select'); ?>">
+                            <a href="<?php echo e(url('admin/product_review')); ?>">
                                 <i class="fas fa-star"></i>Product Review</a>
                         </li>
-                          <li class="@yield('product_select')">
-                            <a href="{{url('admin/product')}}">
+                          <li class="<?php echo $__env->yieldContent('product_select'); ?>">
+                            <a href="<?php echo e(url('admin/product')); ?>">
                                 <i class="fa fa-product-hunt"></i>Product</a>
                         </li>
 
-                        <li class="@yield('customer_select')">
-                            <a href="{{url('admin/customer')}}">
+                        <li class="<?php echo $__env->yieldContent('customer_select'); ?>">
+                            <a href="<?php echo e(url('admin/customer')); ?>">
                                 <i class="fa fa-user"></i>Customer</a>
                         </li>
 
-                        <li class="@yield('home_banner_select')">
-                            <a href="{{url('admin/home_banner')}}">
+                        <li class="<?php echo $__env->yieldContent('home_banner_select'); ?>">
+                            <a href="<?php echo e(url('admin/home_banner')); ?>">
                                 <i class="fas fa-images"></i>Home Banner</a>
                         </li>
 
@@ -213,7 +213,7 @@
 
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="{{url('admin/logout')}}">
+                                                <a href="<?php echo e(url('admin/logout')); ?>">
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
                                             </div>
                                         </div>
@@ -230,8 +230,8 @@
             <div class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
-                        @section('container')
-                        @show
+                        <?php $__env->startSection('container'); ?>
+                        <?php echo $__env->yieldSection(); ?>
                     </div>
                 </div>
             </div>
@@ -241,13 +241,13 @@
     </div>
 
 
-    <script src="{{asset('admin_assets/vendor/jquery-3.2.1.min.js')}}"></script>
-    <script src="{{asset('admin_assets/vendor/bootstrap-4.1/popper.min.js')}}"></script>
-    <script src="{{asset('admin_assets/vendor/bootstrap-4.1/bootstrap.min.js')}}"></script>
-    <script src="{{asset('admin_assets/vendor/wow/wow.min.js')}}"></script>
-    <script src="{{asset('admin_assets/js/main.js')}}"></script>
+    <script src="<?php echo e(asset('admin_assets/vendor/jquery-3.2.1.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('admin_assets/vendor/bootstrap-4.1/popper.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('admin_assets/vendor/bootstrap-4.1/bootstrap.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('admin_assets/vendor/wow/wow.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('admin_assets/js/main.js')); ?>"></script>
     
     
 </body>
 
-</html>
+</html><?php /**PATH E:\laravel\laravel8EcomPart48\my_ecom\resources\views/admin/layout.blade.php ENDPATH**/ ?>

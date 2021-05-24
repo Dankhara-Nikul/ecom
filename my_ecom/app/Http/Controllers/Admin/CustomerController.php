@@ -14,6 +14,8 @@ class CustomerController extends Controller
         return view('admin/customer',$result);
     }
 
+
+
     
     public function show(Request $request,$id='')
     {

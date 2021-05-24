@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\FabricController;
 use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\Admin\PatternController;
 use App\Http\Controllers\Admin\CollarController;
+use App\Http\Controllers\Admin\MediaController;
 
 
 use App\Http\Controllers\Front\FrontController;
@@ -76,9 +77,13 @@ Route::post('admin/auth',[AdminController::class,'auth'])->name('admin.auth');
 Route::group(['middleware'=>'admin_auth'],function(){
     Route::get('admin/dashboard',[AdminController::class,'dashboard']);
 
+    Route::get('admin/media',[MediaController::class,'index']);
+    Route::post('admin/media/upload',[MediaController::class,'image_upload']);
+
     Route::get('admin/category',[CategoryController::class,'index']);
     Route::get('admin/category/manage_category',[CategoryController::class,'manage_category']);
-    Route::get('admin/category/manage_category/{id}',[CategoryController::class,'manage_category']);
+    Route::get('admin/category/manage_sub_category/{id}',[CategoryController::class,'manage_sub_category']);
+    Route::post('admin/category/manage_category_process/{id}',[CategoryController::class,'manage_category_process'])->name('category.manage_category_process');
     Route::post('admin/category/manage_category_process',[CategoryController::class,'manage_category_process'])->name('category.manage_category_process');
     Route::get('admin/category/delete/{id}',[CategoryController::class,'delete']);
     Route::get('admin/category/status/{status}/{id}',[CategoryController::class,'status']);

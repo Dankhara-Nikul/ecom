@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\HomeBanner;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Storage;
+use Illuminate\Support\Facades\Storage;
 class HomeBannerController extends Controller
 {
     public function index()
@@ -55,6 +55,9 @@ class HomeBannerController extends Controller
                 if(Storage::exists('/public/media/banner/'.$arrImage[0]->image)){
                     Storage::delete('/public/media/banner/'.$arrImage[0]->image);
                 }
+            }
+            if (!Storage::disk('public')->exists('media/banner')) {
+                Storage::disk('public')->makeDirectory('media/banner');
             }
 
             $image=$request->file('image');

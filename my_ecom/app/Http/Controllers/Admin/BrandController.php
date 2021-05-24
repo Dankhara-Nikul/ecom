@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\Brand;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Storage;
+use Illuminate\Support\Facades\Storage;
 
 class BrandController extends Controller
 {
@@ -67,7 +67,9 @@ class BrandController extends Controller
                     Storage::delete('/public/media/brand/'.$arrImage[0]->image);
                 }
             }
-
+            if (!Storage::disk('public')->exists('media/brand')) {
+                Storage::disk('public')->makeDirectory('media/brand');
+            }
             $image=$request->file('image');
             $ext=$image->extension();
             $image_name=time().'.'.$ext;

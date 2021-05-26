@@ -25,12 +25,16 @@ class MediaController extends Controller
             foreach($images as $image) {
                 $name = $image->getClientOriginalName();
                 $image->storeAs('/public/upload/product/',$name);
-                $model=media::find($request->post('id'));
+                $productAttrArr['images'] = $name;
+                DB::table('product_images')->insert($productAttrArr);
             }
+           
           }
         
        
-        $arrImage['image'] = DB::table('products_attr')->get();
+
+        $arrImage['image'] = DB::table('product_images')->get();
+        
         return view('admin/media',$arrImage);
     }
 

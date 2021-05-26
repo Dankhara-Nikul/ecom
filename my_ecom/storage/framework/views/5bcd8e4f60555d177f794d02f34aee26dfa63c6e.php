@@ -31,8 +31,9 @@
     <?php $__currentLoopData = $image; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $list): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <div class="col-2">
         <section class="card text-center">
-            <img src="<?php echo e(asset('/storage/upload/product')); ?>/<?php echo e($list->attr_image); ?>">
-            <p><?php echo e($list->attr_image); ?></p>
+       
+            <img src="<?php echo e(asset('/storage/upload/product')); ?>/.<?php echo e($list->images); ?>">
+            <p><?php echo e($list->images); ?></p>
         </section>
     </div>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

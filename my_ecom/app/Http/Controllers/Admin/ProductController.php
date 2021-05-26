@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-
+use App\Models\Admin\Category;
 use App\Models\Admin\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -104,8 +104,8 @@ class ProductController extends Controller
         /*echo '<pre>';
         print_r( $result);
         die();*/
-        $result['category'] = DB::table('categories')->where(['status' => 1])->get();
-
+        $result['category'] = DB::table('categories')->where(['status' => 1])->where(['parent_category_id'=>0])->get();
+        
         $result['sizes'] = DB::table('sizes')->where(['status' => 1])->get();
 
         $result['colors'] = DB::table('colors')->where(['status' => 1])->get();
@@ -119,6 +119,25 @@ class ProductController extends Controller
         $result['taxs'] = DB::table('taxs')->where(['status' => 1])->get();
         return view('admin/manage_product', $result);
     }
+    public function getSubCategories($departmentid=0){
+
+    	// Fetch Employees by Departmentid
+        $result['data'] = DB::table('categories')
+        ->where(['status' => 1])
+        ->where(['parent_category_id'=>$departmentid])->get();
+        
+        return response()->json($result);
+     
+    }
+    public function getAttribute($departmentid=0){
+
+    	// Fetch Employees by Departmentid
+        $result['data'] = DB::table('attributes')
+        ->where(['sub_category_id'=>$departmentid])->get();
+        return response()->json($result);
+     
+    }
+    
 
     public function manage_product_process(Request $request)
     {

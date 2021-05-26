@@ -58,6 +58,8 @@ class CategoryController extends Controller
            
         return view('admin/manage_sub_category',$result);
     }
+    
+    
 
     public function manage_category_process(Request $request,$cid='')
     {

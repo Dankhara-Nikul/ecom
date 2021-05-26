@@ -144,6 +144,7 @@
                   <li>
                     <figure>
                       <a class="aa-product-img" href="<?php echo e(url('product/'.$productArr->slug)); ?>"><img src="<?php echo e(asset('storage/media/'.$productArr->image)); ?>" alt="<?php echo e($productArr->name); ?>"></a>
+                      <a class="aa-add-card-btn" href="javascript:void(0)" onclick="home_add_to_cart('<?php echo e($productArr->id); ?>','<?php echo e($home_product_attr[$productArr->id][0]->size); ?>','<?php echo e($home_product_attr[$productArr->id][0]->color); ?>')"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
                       <figcaption>
                         <h4 class="aa-product-title"><a href="<?php echo e(url('product/'.$productArr->slug)); ?>"><?php echo e($productArr->name); ?></a></h4>
                         <span class="aa-product-price">Rs <?php echo e($home_featured_product_attr[$productArr->id][0]->price); ?></span><span class="aa-product-price"><del>Rs <?php echo e($home_featured_product_attr[$productArr->id][0]->mrp); ?></del></span>

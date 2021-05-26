@@ -60,6 +60,7 @@
                                     <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
                                         Submit
                                     </button>
+                                   
                                 </div>
                                 <input type="hidden" name="id" value="{{$id}}"/>
                             </form>

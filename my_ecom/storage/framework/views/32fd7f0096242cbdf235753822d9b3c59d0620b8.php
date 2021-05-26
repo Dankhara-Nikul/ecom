@@ -122,7 +122,7 @@ unset($__errorArgs, $__bag); ?>
                                     </button>
                                 </a>
                                 <?php endif; ?>
-                                <a href="<?php echo e(url('admin/category/manage_category/')); ?>/<?php echo e($list->id); ?>">
+                                <a href="<?php echo e(url('admin/category/manage_attribute')); ?>/<?php echo e($list->id); ?>">
                                     <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                                         <i class="zmdi zmdi-edit"></i>
                                     </button>

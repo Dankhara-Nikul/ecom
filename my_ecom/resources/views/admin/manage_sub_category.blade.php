@@ -105,7 +105,7 @@
                                     </button>
                                 </a>
                                 @endif
-                                <a href="{{url('admin/category/manage_category/')}}/{{$list->id}}">
+                                <a href="{{url('admin/category/manage_attribute')}}/{{$list->id}}">
                                     <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                                         <i class="zmdi zmdi-edit"></i>
                                     </button>

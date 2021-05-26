@@ -31,8 +31,9 @@
     @foreach($image as $list)
     <div class="col-2">
         <section class="card text-center">
-            <img src="{{asset('/storage/upload/product')}}/{{$list->attr_image}}">
-            <p>{{$list->attr_image}}</p>
+       
+            <img src="{{asset('/storage/upload/product')}}/.{{$list->images}}">
+            <p>{{$list->images}}</p>
         </section>
     </div>
     @endforeach

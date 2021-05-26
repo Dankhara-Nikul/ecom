@@ -16,8 +16,7 @@ use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\Admin\PatternController;
 use App\Http\Controllers\Admin\CollarController;
 use App\Http\Controllers\Admin\MediaController;
-
-
+use App\Http\Controllers\AttributeController;
 use App\Http\Controllers\Front\FrontController;
 use Illuminate\Support\Facades\Route;
 
@@ -87,7 +86,14 @@ Route::group(['middleware'=>'admin_auth'],function(){
     Route::post('admin/category/manage_category_process',[CategoryController::class,'manage_category_process'])->name('category.manage_category_process');
     Route::get('admin/category/delete/{id}',[CategoryController::class,'delete']);
     Route::get('admin/category/status/{status}/{id}',[CategoryController::class,'status']);
-    
+
+    Route::get('admin/category/manage_attribute/{id}',[AttributeController::class,'manage_attribute']);
+    Route::get('admin/category/manage_attribute_add/{id}',[AttributeController::class,'manage_attribute_add']);
+    Route::get('admin/category/manage_attribute_update/{cid}/{id}',[AttributeController::class,'manage_attribute_add']);
+    Route::post('admin/category/manage_attribute_process/{cid}/{id}',[AttributeController::class,'manage_attribute_process'])->name('category.manage_attribute_process');
+    Route::post('admin/category/manage_attribute_process/{cid}/',[AttributeController::class,'manage_attribute_process'])->name('category.manage_attribute_process');
+    Route::get('admin/attribute/delete/{id}',[AttributeController::class,'delete']);
+
     Route::get('admin/coupon',[CouponController::class,'index']);
     Route::get('admin/coupon/manage_coupon',[CouponController::class,'manage_coupon']);
     Route::get('admin/coupon/manage_coupon/{id}',[CouponController::class,'manage_coupon']);
@@ -157,6 +163,9 @@ Route::group(['middleware'=>'admin_auth'],function(){
     Route::get('admin/product/status/{status}/{id}',[ProductController::class,'status']);
     Route::get('admin/product/product_attr_delete/{paid}/{pid}',[ProductController::class,'product_attr_delete']);
     Route::get('admin/product/product_images_delete/{paid}/{pid}',[ProductController::class,'product_images_delete']);
+    Route::get('admin/product/getsubcategores/{id}',[ProductController::class,'getSubCategories']);
+    Route::get('admin/product/getAttribute/{id}',[ProductController::class,'getAttribute']);
+    
 
     Route::get('admin/brand',[BrandController::class,'index']);
     Route::get('admin/brand/manage_brand',[BrandController::class,'manage_brand']);

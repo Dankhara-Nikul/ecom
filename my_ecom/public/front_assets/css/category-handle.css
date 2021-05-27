@@ -1,0 +1,48 @@
+.cat-filter i {
+    position: absolute;
+    right: 10px;
+    margin-top: 5px;
+}
+
+#shop-category,
+#shop-price,
+#shop-color {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+    margin-top: 2rem;
+    position: relative;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+
+#shop-by-category,
+#shop-by-price,
+#shop-by-color {
+    margin-bottom: 2rem;
+}
+
+.aa-sidebar-widget {
+    margin-bottom: 2rem;
+}
+
+
+/* No product found */
+
+.no-product-found {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+@media screen and (max-width:768px) {
+    .cat-filter {
+        font-size: 20px;
+    }
+}

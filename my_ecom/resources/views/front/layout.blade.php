@@ -5,13 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
     <title>@yield('page_title')</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"> --}}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
     <link href="{{asset('front_assets/css/font-awesome.css')}}" rel="stylesheet">
     <link href="{{asset('front_assets/css/bootstrap.css')}}" rel="stylesheet">   
     <link href="{{asset('front_assets/css/jquery.smartmenus.bootstrap.css')}}" rel="stylesheet">
+    <link href="{{asset('front_assets/css/slider.css')}}" rel="stylesheet">
+    <link href="{{asset('front_assets/css/card.css')}}" rel="stylesheet">
+    <link href="{{asset('front_assets/css/search.css')}}" rel="stylesheet">
+    <link href="{{asset('front_assets/css/product-card.css')}}" rel="stylesheet">
+    <link href="{{asset('front_assets/css/navbar.css')}}" rel="stylesheet">
+    <link href="{{asset('front_assets/css/support.css')}}" rel="stylesheet">
+    <link href="{{asset('front_assets/css/product-data.css')}}" rel="stylesheet">
+    <link href="{{asset('front_assets/css/category-handle.css')}}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('front_assets/css/jquery.simpleLens.css')}}">    
     <link rel="stylesheet" type="text/css" href="{{asset('front_assets/css/slick.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('front_assets/css/nouislider.css')}}">
@@ -40,7 +50,7 @@
    <!-- wpf loader Two -->
     <div id="wpf-loader-two">          
       <div class="wpf-loader-two-inner">
-        <span>Loading</span>
+        <span>Daniel</span>
       </div>
     </div> 
     <!-- / wpf loader Two -->       
@@ -48,7 +58,55 @@
     <a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a>
   <!-- END SCROLL TOP BUTTON -->
 
+{{-- Header --}}
 
+<nav>
+  <div class="logo">
+      <a href="{{url('/')}}"><img src="{{asset('storage\media\logo\logo.png')}}" alt="Logo Image"></a>
+  </div>
+  <div class="hamburger">
+      <div class="line1"></div>
+      <div class="line2"></div>
+      <div class="line3"></div>
+  </div>
+  <ul class="nav-links">
+      <li><a href="{{url('/')}}">Home</a></li>
+      {{-- <li><button class="login-button" href="#">Login</button></li> --}}
+
+      <li> {!! getTopNavCat() !!}</li>
+
+      <div class="form">
+        <input type="text" class="search-custom"/>
+      </div>
+    
+  </ul>
+  <div class="icons">
+    @if(session()->has('FRONT_USER_LOGIN')!=null)
+      <li><a href="{{url('/order')}}">My Order</a></li>
+      <li><a href="{{url('/logout')}}">Logout</a></li>
+    
+      @else
+        <div class="login-icon login-button">
+          <label for="loging-id"><img src="{{asset('front_assets\img\icon\login.png')}}" style="width:20px;"></label>
+          <a id="login-id" class="text-white" href="" data-toggle="modal" data-target="#login-modal" style="color: white">
+            Login
+            </a>
+        </div>
+      @endif
+      <div class="cart-icon">
+        @php
+        $getAddToCartTotalItem=getAddToCartTotalItem();
+        $totalCartItem=count($getAddToCartTotalItem);
+        $totalPrice=0;
+        @endphp 
+        <a id="cart-icon" class="" href="{{url('/cart')}}">
+        <label for="cart-icon" style="color: white;"><img src="{{asset('front_assets\img\icon\cart.png')}}" class="cart-icon-ic" style="width:30px;">{{$totalCartItem}}</label></a>
+        </div>
+  </div>
+</nav>
+
+{{-- /Header --}}
+{{-- 
   <!-- Start header section -->
   <header id="aa-header">
     <!-- start header top  -->
@@ -84,11 +142,11 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> --}}
     <!-- / header top  -->
 
     <!-- start header bottom  -->
-    <div class="aa-header-bottom">
+    {{-- <div class="aa-header-bottom">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -99,13 +157,13 @@
                 <a href="{{url('/')}}">
                   <span class="fa fa-shopping-cart"></span>
                   <p>daily<strong>Shop</strong> <span>Your Shopping Partner</span></p>
-                </a>
+                </a> --}}
                 <!-- img based logo -->
                 <!-- <a href="javascript:void(0)"><img src="img/logo.jpg" alt="logo img"></a> -->
               </div>
               <!-- / logo  -->
-               <!-- cart box -->
-              @php
+               <!-- cart box -->  
+              {{-- @php
               $getAddToCartTotalItem=getAddToCartTotalItem();
               $totalCartItem=count($getAddToCartTotalItem);
               $totalPrice=0;
@@ -142,27 +200,25 @@
                       </span>
                     </li>
                   </ul>
-                 
-                  @else
-                  <p>Cart is Empty</p>
-                  @endif
-                  <a id="c1" class="aa-cartbox-checkout aa-primary-btn" href="{{url('/cart')}}">Cart</a>
+                  <a class="aa-cartbox-checkout aa-primary-btn" href="{{url('/cart')}}">Cart</a>
                
-               
+                @endif
                 </div>
               </div>
-              <!-- / cart box -->
+              <!-- / cart box --> --}}
               <!-- search box --> 
-              <div class="wrapper">
+              {{-- <div class="wrapper">
                 <form action="">
                   <div class="search-box">
                     <input type="text" id="search_str" placeholder="Search" class="input">
                     <div class="btn">
                         <i class="fa fa-search" aria-hidden="true"></i>
+                
                     </div>
                   </div>
                 </form>
-              </div>
+               
+              </div> --}}
            <!--   <div class="aa-search-box">
                 <form action="">
                   <input type="text" id="search_str" placeholder="Search here ex. 'man' ">
@@ -170,16 +226,16 @@
                 </form>
               </div>  -->
               <!-- / search box -->             
-            </div>
+            {{-- </div>
           </div>
         </div>
       </div>
     </div>
     <!-- / header bottom  -->
-  </header>
+  </header> --}}
   <!-- / header section -->
   <!-- menu -->
-  <section id="menu">
+  {{-- <section id="menu">
     <div class="container">
       <div class="menu-area">
         <!-- Navbar -->
@@ -200,12 +256,12 @@
         </div>
       </div>       
     </div>
-  </section>
+  </section> --}}
   <!-- / menu -->
   <!-- Start slider -->
   
   @section('container')
-  @show      
+  @show     
   
   <!-- footer -->  
   <footer id="aa-footer">
@@ -218,26 +274,26 @@
             <div class="row">
               <div class="col-md-3 col-sm-6">
                 <div class="aa-footer-widget">
-                  <h3>Useful Link</h3>
+                  <h3>Main Menu</h3>
                   <ul class="aa-footer-nav">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Our Services</a></li>
+                    <li><a href="#">Our Products</a></li>
                     <li><a href="#">About Us</a></li>
                     <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Privacy Police</a></li>
-                    <li><a href="#">Terms and Conditions</a></li>
-                    <li><a href="#">Refund And Cancellation Policy</a></li>
-                    <li><a href="#">Shipping Policy</a></li>
-                    <li><a href="#">International Order</a></li>
                   </ul>
                 </div>
               </div>
               <div class="col-md-3 col-sm-6">
                 <div class="aa-footer-widget">
                   <div class="aa-footer-widget">
-                    <h3>Account</h3>
+                    <h3>Knowledge Base</h3>
                     <ul class="aa-footer-nav">
-                      <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
-                      <li><a href="{{url('registration')}}">Register</a></li>
-                      
+                      <li><a href="#">Delivery</a></li>
+                      <li><a href="#">Returns</a></li>
+                      <li><a href="#">Services</a></li>
+                      <li><a href="#">Discount</a></li>
+                      <li><a href="#">Special Offer</a></li>
                     </ul>
                   </div>
                 </div>
@@ -245,28 +301,32 @@
               <div class="col-md-3 col-sm-6">
                 <div class="aa-footer-widget">
                   <div class="aa-footer-widget">
-                    <h3>Follow us</h3>
-                    <div class="aa-footer-social">
-                      <a href="#"><span class="fa fa-facebook"></span></a>
-                      <a href="#"><span class="fa fa-twitter"></span></a>
-                      <a href="#"><span class="fa fa-google-plus"></span></a>
-                      <a href="#"><span class="fa fa-youtube"></span></a>
-                    </div>
+                    <h3>Useful Links</h3>
+                    <ul class="aa-footer-nav">
+                      <li><a href="#">Site Map</a></li>
+                      <li><a href="#">Search</a></li>
+                      <li><a href="#">Advanced Search</a></li>
+                      <li><a href="#">Suppliers</a></li>
+                      <li><a href="#">FAQ</a></li>
+                    </ul>
                   </div>
                 </div>
               </div>
               <div class="col-md-3 col-sm-6">
                 <div class="aa-footer-widget">
                   <div class="aa-footer-widget">
-                    <div>
-                      <img src="" width="328" height="25"/>
-                    </div>
+                    <h3>Contact Us</h3>
                     <address>
                       <p> 25 Astor Pl, NY 10003, USA</p>
                       <p><span class="fa fa-phone"></span>+1 212-982-4589</p>
                       <p><span class="fa fa-envelope"></span>dailyshop@gmail.com</p>
                     </address>
-                   
+                    <div class="aa-footer-social">
+                      <a href="#"><span class="fa fa-facebook"></span></a>
+                      <a href="#"><span class="fa fa-twitter"></span></a>
+                      <a href="#"><span class="fa fa-google-plus"></span></a>
+                      <a href="#"><span class="fa fa-youtube"></span></a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -282,7 +342,7 @@
         <div class="row">
         <div class="col-md-12">
           <div class="aa-footer-bottom-area">
-           
+            <p>Designed by <a href="http://www.markups.io/">MarkUps.io</a></p>
             <div class="aa-footer-payment">
               <span class="fa fa-cc-mastercard"></span>
               <span class="fa fa-cc-visa"></span>
@@ -359,6 +419,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="{{asset('front_assets/js/bootstrap.js')}}"></script>  
   <script type="text/javascript" src="{{asset('front_assets/js/jquery.smartmenus.js')}}"></script>
+
+  <script type="text/javascript" src="{{asset('front_assets/js/jssor.slider-28.1.0.min.js')}}"></script>
+  <script type="text/javascript" src="{{asset('front_assets/js/slider.js')}}"></script>
+
   <script type="text/javascript" src="{{asset('front_assets/js/jquery.smartmenus.bootstrap.js')}}"></script>  
   <script src="{{asset('front_assets/js/sequence.js')}}"></script>
   <script src="{{asset('front_assets/js/sequence-theme.modern-slide-in.js')}}"></script>  
@@ -367,5 +431,7 @@
   <script type="text/javascript" src="{{asset('front_assets/js/slick.js')}}"></script>
   <script type="text/javascript" src="{{asset('front_assets/js/nouislider.js')}}"></script>
   <script src="{{asset('front_assets/js/custom.js')}}"></script> 
+  <script src="{{asset('front_assets/js/category.js')}}"></script> 
+  <script src="{{asset('front_assets/js/navbar.js')}}"></script> 
   </body>
 </html>

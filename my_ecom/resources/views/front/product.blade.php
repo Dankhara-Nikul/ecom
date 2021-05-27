@@ -20,8 +20,230 @@
   </section>-->
   <!-- / catg header banner section -->
 
+  {{-- Product View --}}
+
+  <div class="product-data">
+
+    <div class="product-image-area">
+      <div class="product-column">
+        @php
+        $temp=0;
+            
+        @endphp
+        @if(isset($product_images[$product[0]->id][0]))
+  
+        @foreach($product_images[$product[0]->id] as $list)
+        <div class="column-images">
+        
+              @if($temp==0) 
+              
+
+                <img src="{{asset('storage/media/'.$product[0]->image)}}" class="main-product-image" id="$list->id" onclick="hello(this.src)">
+                <div class="column-image-text">Text</div>
+
+                @php 
+                  $temp=1; 
+                @endphp
+                
+              @else
+          
+              <img src="{{asset('storage/media/'.$list->images)}}" class="main-product-image simpleLens-thumbnail-wrapper" id="$list->id" onclick="hello(this.src)">
+              <div class="column-image-text">Text</div>
+              @endif
+        </div>
+        @endforeach
+        @endif
+
+      </div>
+      <div class="main-product bg-image-container">
+       <a data-lns-image="{{asset('storage/media/'.$product[0]->image)}}" class="lns-image">
+        <img id="img" src="{{asset('storage/media/'.$product[0]->image)}}" class="main-product-image">
+      </a>
+      
+          {{-- <img src="{{asset('storage/media/'.$product[0]->image)}}" class="main-product-image" id="img"> --}}
+          <div class="product-text">Name</div>
+       
+      </div>
+    </div>
+    
+
+
+    <div class="product-information">
+      {{-- <h1>Hello</h1> --}}
+
+      <div class="col-md-7 col-sm-7 col-xs-12">
+        <div class="aa-product-view-content">
+          <h3>{{$product[0]->name}}</h3>
+          <div class="aa-price-block">
+            <span class="aa-product-view-price">Rs {{$product_attr[$product[0]->id][0]->price}}&nbsp;&nbsp;</span>
+            <span class="aa-product-view-price"><del>Rs {{$product_attr[$product[0]->id][0]->mrp}}</del></span>
+
+            <p class="aa-product-avilability">Avilability: <span>In stock</span></p>
+
+             @if($product[0]->lead_time!='')
+             <p class="lead_time">
+             {{$product[0]->lead_time}}
+             </p>
+             @endif 
+
+          </div>
+          <p>
+          {!!$product[0]->short_desc!!}
+          </p>
+
+          @if($product_attr[$product[0]->id][0]->size_id>0)
+          <h4>Size</h4>
+          <div class="aa-prod-view-size">
+          @php
+            $arrSize=[];
+            foreach($product_attr[$product[0]->id] as $attr){
+              $arrSize[]=$attr->size;
+            }  
+            $arrSize=array_unique($arrSize);
+           
+          @endphp
+          @foreach($arrSize as $attr)  
+
+          @if($attr!='')
+            <a href="javascript:void(0)" onclick="showColor('{{$attr}}')" id="size_{{$attr}}" class="size_link">{{$attr}}</a>
+            @endif  
+
+            @endforeach  
+          </div>
+          @endif
+          
+          
+          @if($product_attr[$product[0]->id][0]->color_id>0)
+          
+          <h4>Color</h4>
+          <div class="aa-color-tag">
+            @foreach($product_attr[$product[0]->id] as $attr)  
+            
+            @if($attr->color!='')
+            <a href="javascript:void(0)" class="aa-color-{{strtolower($attr->color)}} product_color size_{{$attr->size}}"  onclick=change_product_color_image("{{asset('storage/media/'.$attr->attr_image)}}","{{$attr->color}}")></a>
+            @endif  
+
+            @endforeach  
+          </div>
+          @endif    
+
+          <div class="aa-prod-quantity">
+            <form action="">
+              <select id="qty" name="qty">
+                @for($i=1;$i<11;$i++)
+                  <option value="{{$i}}">{{$i}}</option>
+                @endfor
+              </select>
+            </form>
+            <p class="aa-prod-category">
+           <b> Model: </b><a href="#">{{$product[0]->model}}</a>
+            </p>
+          </div>
+          <div class="add-to-cart">
+            <a class="add-to-cart-btn" href="javascript:void(0)" onclick="add_to_cart('{{$product[0]->id}}','{{$product_attr[$product[0]->id][0]->size_id}}','{{$product_attr[$product[0]->id][0]->color_id}}')">Add To Cart</a>
+          </div>
+          <br>
+          <div id="add_to_cart_msg"></div>
+        </div>
+      </div>
+      
+      {{--  --}}
+      
+    </div>
+  </div>
+
+  <script>
+    const hello = (data) =>{
+      document.getElementById("img").src=data;
+    }
+  </script>
+
+  {{-- Related product --}}
+<div class="related-product">
+  <div class="text-center"><h2>Related Product</h2></div>
+
+   {{-- Product card --}}
+               <div class="row">
+                  
+                  @if(isset($related_product[0]))
+                  @foreach($related_product as $productArr)
+                    <div class="col-md-4">
+                      <div class="dress-card">
+                        <div class="dress-card-head">
+                          <a href="{{url('product/'.$productArr->slug)}}">
+                            <img class="dress-card-img-top" src="{{asset('storage/media/'.$productArr->image)}}" alt="{{$productArr->name}}">
+                          </a>
+                          {{-- <img class="dress-card-img-top" src="https://assets.myntassets.com/h_1440,q_100,w_1080/v1/assets/images/7578935/2018/10/23/d7b740bc-e00e-4bec-97aa-65016f8ff2e71540289479612-Harpa-Women-Dresses-2331540289479465-1.jpg" alt=""> --}}
+                          <div class="surprise-bubble"><span class="dress-card-heart">
+                              <i class="fa fa-heart"></i>
+                            </span><a href="{{url('product/'.$productArr->slug)}}"> <span>More</span></a></div>
+                        </div>
+                        <div class="dress-card-body">
+                          <h4 class="dress-card-title"><a href="{{url('product/'.$productArr->slug)}}">{{$productArr->name}} </a></h4>
+                          {{-- <p class="dress-card-para">Womans printed clothing</p> --}}
+                          <p class="dress-card-para"><span class="dress-card-price">Rs {{$related_product_attr[$productArr->id][0]->price}} &ensp;</span><span class="dress-card-crossed">Rs {{$related_product_attr[$productArr->id][0]->mrp}}</span><span class="dress-card-off">&ensp;(60% OFF)</span></p>
+                          <div class="row">
+                            <div class="col-md-6 card-button"><a href="">
+              
+                              <a onclick="home_add_to_cart('{{$productArr->id}}','{{$related_product_attr[$productArr->id][0]->size}}','{{$related_product_attr[$productArr->id][0]->color}}')">                         
+                              
+                              <div class="card-button-inner bag-button">Add to Cart</div></a></div>  </a>
+                            <div class="col-md-6 card-button"><a href="{{url('product/'.$productArr->slug)}}"><div class="card-button-inner wish-button">Buy Now</div></a></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    @endforeach
+                    @else
+                    <div class="no-product-found">
+                       <img src="{{asset('front_assets\img\icon\no-product-found.png')}}" alt="" class="no-product col-md-6">
+                    </div>
+      
+                    @endif
+               </div>
+               {{-- /Product card --}}
+</div>
+
+
+
+<div class="aa-product-related-item">
+  <h3>Related Products</h3>
+  <ul class="aa-product-catg aa-related-item-slider">
+{{--    
+  @if(isset($related_product[0]))
+        @foreach($related_product as $productArr)
+        <li>
+            <figure>
+            <a class="aa-product-img" href="{{url('product/'.$productArr->slug)}}"><img src="{{asset('storage/media/'.$productArr->image)}}" alt="{{$productArr->name}}"></a>
+            <a class="aa-add-card-btn" href="{{url('product/'.$productArr->slug)}}"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+            <figcaption>
+                <h4 class="aa-product-title"><a href="{{url('product/'.$productArr->slug)}}">{{$productArr->name}}</a></h4>
+                <span class="aa-product-price">Rs {{$related_product_attr[$productArr->id][0]->price}}</span><span class="aa-product-price"><del>Rs {{$related_product_attr[$productArr->id][0]->mrp}}</del></span>
+            </figcaption>
+            </figure>                          
+        </li>  
+        @endforeach    
+        @else
+        <li>
+            <figure>
+            No data found
+            <figure>
+        <li>
+        @endif      
+    
+                     
+  </ul>
+</div>  --}}
+
+
+
+  
+  {{-- /Related product --}}
+
+  {{-- /Product View --}}
+
   <!-- product category -->
-  <section id="aa-product-details">
+  {{-- <section id="aa-product-details">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -131,15 +353,19 @@
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="aa-product-details-bottom">
+            </div> --}}
+            {{-- <div class="aa-product-details-bottom">
               <ul class="nav nav-tabs" id="myTab2">
                 <li><a href="#description" data-toggle="tab">Description</a></li>
                 <li><a href="#technical_specification" data-toggle="tab">Technical Specification</a></li>
                 <li><a href="#uses" data-toggle="tab">Uses</a></li>
                 <li><a href="#warranty" data-toggle="tab">Warranty</a></li>
                 <li><a href="#review" data-toggle="tab">Reviews</a></li>                
-              </ul>
+              </ul> --}}
+
+              <br>
+              <br>
+              <br>
 
               <!-- Tab panes -->
               <div class="tab-content">

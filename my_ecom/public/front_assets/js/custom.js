@@ -361,7 +361,7 @@ jQuery(function($) {
 
 function change_product_color_image(img, color) {
     jQuery('#color_id').val(color);
-    jQuery('.simpleLens-big-image-container').html('<a data-lens-image="' + img + '" class="simpleLens-lens-image"><img src="' + img + '" class="simpleLens-big-image"></a>');
+    jQuery('.bg-image-container').html('<a data-lns-image="' + img + '" class="lns-image"><img src="' + img + '" class="main-product-image" id="img"></a>');
 }
 
 function showColor(size) {
@@ -376,7 +376,6 @@ function home_add_to_cart(id, size_str_id, color_str_id) {
     jQuery('#color_id').val(color_str_id);
     jQuery('#size_id').val(size_str_id);
     add_to_cart(id, size_str_id, color_str_id);
-
 }
 
 function add_to_cart(id, size_str_id, color_str_id) {
@@ -637,6 +636,8 @@ jQuery('#frmPlaceOrder').submit(function(e) {
         }
     });
 });
+
+
 
 
 jQuery('#frmProductReview').submit(function(e) {
